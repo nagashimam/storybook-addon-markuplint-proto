@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "description": "Prototype of unofficial markuplint Storybook addon",
   "keywords": [
-    "markuplint", "accessibility", "test", "storybook-addons"
+    "markuplint",
+    "accessibility",
+    "test",
+    "storybook-addons"
   ],
   "repository": {
     "type": "git",
@@ -45,6 +48,7 @@
     "@babel/preset-typescript": "^7.13.0",
     "@storybook/addon-essentials": "^6.4.0",
     "@storybook/react": "^6.4.0",
+    "@types/js-beautify": "^1.13.3",
     "auto": "^10.3.0",
     "babel-loader": "^8.1.0",
     "boxen": "^5.0.1",
@@ -81,8 +85,24 @@
   "storybook": {
     "displayName": "markuplint-proto",
     "supportedFrameworks": [
-      "react", "vue", "angular", "web-components", "ember", "html", "svelte", "preact", "react-native"
+      "react",
+      "vue",
+      "angular",
+      "web-components",
+      "ember",
+      "html",
+      "svelte",
+      "preact",
+      "react-native"
     ],
     "icon": "https://user-images.githubusercontent.com/321738/63501763-88dbf600-c4cc-11e9-96cd-94adadc2fd72.png"
+  },
+  "dependencies": {
+    "@markuplint/html-parser": "^2.2.1",
+    "@markuplint/html-spec": "^2.7.0",
+    "@markuplint/i18n": "^2.1.1",
+    "@markuplint/ml-core": "^2.3.2",
+    "@markuplint/rules": "^2.4.2",
+    "js-beautify": "^1.14.3"
   }
 }

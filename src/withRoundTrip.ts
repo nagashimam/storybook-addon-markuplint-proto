@@ -2,33 +2,16 @@ import { useChannel } from "@storybook/addons";
 import type { DecoratorFunction } from "@storybook/addons";
 import { STORY_CHANGED } from "@storybook/core-events";
 import { EVENTS } from "./constants";
+import { verify } from "./verify";
+import { Message, Result } from "./types";
+import { Violation } from "@markuplint/ml-config";
+import * as beautifier from "js-beautify";
 
 export const withRoundTrip: DecoratorFunction = (storyFn) => {
   const emit = useChannel({
-    [EVENTS.REQUEST]: () => {
-      emit(EVENTS.RESULT, {
-        danger: [
-          {
-            title: "Panels are the most common type of addon in the ecosystem",
-            description:
-              "For example the official @storybook/actions and @storybook/a11y use this pattern",
-          },
-          {
-            title:
-              "You can specify a custom title for your addon panel and have full control over what content it renders",
-            description:
-              "@storybook/components offers components to help you addons with the look and feel of Storybook itself",
-          },
-        ],
-        warning: [
-          {
-            title:
-              'This tabbed UI pattern is a popular option to display "test" reports.',
-            description:
-              "It's used by @storybook/addon-jest and @storybook/addon-a11y. @storybook/components offers this and other components to help you quickly build an addon",
-          },
-        ],
-      });
+    [EVENTS.REQUEST]: async () => {
+      const result = await getResult();
+      emit(EVENTS.RESULT, result);
     },
     [STORY_CHANGED]: () => {
       emit(EVENTS.RESULT, {
@@ -44,4 +27,32 @@ export const withRoundTrip: DecoratorFunction = (storyFn) => {
     },
   });
   return storyFn();
+};
+
+const getResult: () => Promise<Result> = async () => {
+  const root = document.getElementById("root");
+
+  // 整形しないと1行の長いHTMLになるので、どこで問題が起きているのか分かりにくい
+  // 整形して適当に改行を入れる
+  const uglyInnerHTML = root.innerHTML;
+  const innerHTML = beautifier.html_beautify(uglyInnerHTML);
+  const violations = root ? await verify(innerHTML) : [];
+  return violations.reduce(
+    (prev: Result, cur: Violation): Result => {
+      const message: Message = {
+        title: cur.message,
+        description: innerHTML.split("\n")[cur.line - 1],
+      };
+      if (cur.severity === "error") {
+        prev.danger.push(message);
+      } else if (cur.severity === "warning") {
+        prev.warning.push(message);
+      }
+      return prev;
+    },
+    {
+      danger: [],
+      warning: [],
+    }
+  );
 };
