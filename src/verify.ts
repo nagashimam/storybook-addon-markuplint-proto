@@ -21,7 +21,11 @@ export const verify: (innerHTML: string) => Promise<Violation[]> = async (
         doctype: true,
         "id-duplication": true,
         "ineffective-attr": true,
-        "invalid-attr": true,
+        "invalid-attr": {
+          option: {
+            ignoreAttrNamePrefix: ["app", "*ng", "ng", "_ng"],
+          },
+        },
         "permitted-contents": true,
         "required-attr": true,
         "required-element": true,
