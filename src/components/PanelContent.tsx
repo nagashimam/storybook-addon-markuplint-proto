@@ -14,19 +14,13 @@ type Results = {
 
 interface PanelContentProps {
   results: Results;
-  fetchData: () => void;
-  clearData: () => void;
 }
 
 /**
  * Checkout https://github.com/storybookjs/storybook/blob/next/addons/jest/src/components/Panel.tsx
  * for a real world example
  */
-export const PanelContent: React.FC<PanelContentProps> = ({
-  results,
-  fetchData,
-  clearData,
-}) => (
+export const PanelContent: React.FC<PanelContentProps> = ({ results }) => (
   <TabsState
     initial="overview"
     backgroundColor={convert(themes.normal).background.hoverable}
@@ -38,21 +32,7 @@ export const PanelContent: React.FC<PanelContentProps> = ({
     >
       <Placeholder>
         <Fragment>
-          Story上でMarkuplintを実行できます
-        </Fragment>
-        <Fragment>
-          <RequestDataButton
-            secondary
-            small
-            onClick={fetchData}
-            style={{ marginRight: 16 }}
-          >
-            実行
-          </RequestDataButton>
-
-          <RequestDataButton outline small onClick={clearData}>
-            実行結果をクリア
-          </RequestDataButton>
+          Story上でmarkuplintを実行できます。parametersから設定が変更可能です
         </Fragment>
       </Placeholder>
     </div>
