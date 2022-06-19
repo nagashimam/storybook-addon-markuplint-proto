@@ -1,6 +1,6 @@
 {
   "name": "storybook-addon-markuplint-proto",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Prototype of unofficial markuplint Storybook addon",
   "keywords": [
     "markuplint",
