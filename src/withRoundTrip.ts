@@ -42,8 +42,8 @@ const defaultParameter: Ruleset = {
 };
 
 export const withRoundTrip: DecoratorFunction = (storyFn) => {
-  const ruleSet = useParameter<Ruleset>(PARAM_KEY, defaultParameter);
   const emit = useChannel({});
+  const ruleSet = useParameter<Ruleset>(PARAM_KEY, defaultParameter);
   emit(EVENTS.PARAMETERS_SET, ruleSet);
   return storyFn();
 };

@@ -46,8 +46,8 @@
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.5",
     "@babel/preset-typescript": "^7.13.0",
-    "@storybook/addon-essentials": "^6.4.0",
-    "@storybook/react": "^6.4.0",
+    "@storybook/addon-essentials": "^6.5.8",
+    "@storybook/react": "^6.5.8",
     "@types/js-beautify": "^1.13.3",
     "auto": "^10.3.0",
     "babel-loader": "^8.1.0",
@@ -63,19 +63,13 @@
     "zx": "^1.14.1"
   },
   "peerDependencies": {
-    "@markuplint/html-parser": "^2.2.1",
-    "@markuplint/html-spec": "^2.7.0",
-    "@markuplint/i18n": "^2.1.1",
-    "@markuplint/ml-core": "^2.3.2",
-    "@markuplint/rules": "^2.4.2",
-    "@storybook/addons": "^6.4.0",
-    "@storybook/api": "^6.4.0",
-    "@storybook/components": "^6.4.0",
-    "@storybook/core-events": "^6.4.0",
-    "@storybook/theming": "^6.4.0",
-    "js-beautify": "^1.14.3",
+    "@storybook/addons": "^6.5.8",
+    "@storybook/api": "^6.5.8",
+    "@storybook/components": "^6.5.8",
+    "@storybook/core-events": "^6.5.8",
+    "@storybook/theming": "^6.5.8",
     "react": "^16.8.0 || ^17.0.0",
-    "react-dom": "^16.8.0 || ^17.0.0"
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
   },
   "peerDependenciesMeta": {
     "react": {
@@ -102,5 +96,14 @@
       "react-native"
     ],
     "icon": "https://user-images.githubusercontent.com/321738/63501763-88dbf600-c4cc-11e9-96cd-94adadc2fd72.png"
+  },
+  "dependencies": {
+    "@markuplint/html-parser": "^2.2.2",
+    "@markuplint/html-spec": "^2.8.0",
+    "@markuplint/i18n": "^2.1.1",
+    "@markuplint/ml-config": "^2.1.0",
+    "@markuplint/ml-core": "^2.3.3",
+    "@markuplint/rules": "^2.4.3",
+    "js-beautify": "^1.14.6"
   }
 }

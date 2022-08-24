@@ -1,5 +1,5 @@
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 
 import { Header } from "./Header";
 import "./page.css";
@@ -15,8 +15,7 @@ export const Page = ({ user, onLogin, onLogout, onCreateAccount }) => (
 
     <section>
       <h2>Pages in Storybook</h2>
-      <div alt="altindiv">alt in div</div>
-      <p>
+      <p alt="altinp">
         We recommend building UIs with a{" "}
         <a
           href="https://componentdriven.org"

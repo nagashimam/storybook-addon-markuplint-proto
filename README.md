@@ -1,5 +1,5 @@
-# Storybook Addon markuplint-proto
-Prototype of unofficial markuplint Storybook addon
+# Storybook Addon hoge
+hoge
 
 ### Development scripts
 
