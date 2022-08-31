@@ -10,7 +10,6 @@ import { EVENTS } from "./constants";
 import { Message, Result } from "./types";
 
 export const callVerify = async (api: API, ruleset: Ruleset) => {
-  console.log("markuplint called", ruleset);
   const result = await getResult(ruleset);
   api.getChannel().emit(EVENTS.RESULT, result);
 };
@@ -25,6 +24,7 @@ const getResult: (ruleset: Ruleset) => Promise<Result> = async (ruleset) => {
   // 整形して適当に改行を入れる
   const uglyInnerHTML = root.innerHTML;
   const innerHTML = beautifier.html_beautify(uglyInnerHTML);
+  console.log("markuplint", { innerHTML });
   const violations = root ? await verify(innerHTML, ruleset) : [];
   return violations.reduce(
     (prev: Result, cur: Violation): Result => {

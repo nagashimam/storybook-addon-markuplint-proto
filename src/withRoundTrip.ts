@@ -2,7 +2,7 @@ import { Ruleset } from "@markuplint/ml-core";
 import { DecoratorFunction, useChannel, useParameter } from "@storybook/addons";
 import { EVENTS, PARAM_KEY } from "./constants";
 
-const defaultParameter: Ruleset = {
+export const defaultParameter: Ruleset = {
   rules: {
     "attr-duplication": true,
     "deprecated-attr": true,
